@@ -2,9 +2,10 @@
     "name": "stan-vscode",
     "displayName": "stan-vscode",
     "description": "Stan language support for VS Code",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "publisher": "ivan-bocharov",
     "repository": "https://github.com/bocharov-ivan/stan-vscode",
+    "icon": "img/stan_logo.png",
     "engines": {
         "vscode": "^1.5.0"
     },
