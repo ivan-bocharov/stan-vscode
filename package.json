@@ -2,7 +2,7 @@
     "name": "stan-vscode",
     "displayName": "stan-vscode",
     "description": "Stan language support for VS Code",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "publisher": "ivan-bocharov",
     "repository": "https://github.com/bocharov-ivan/stan-vscode",
     "engines": {
@@ -12,16 +12,25 @@
         "Languages"
     ],
     "contributes": {
-        "languages": [{
-            "id": "stan",
-            "aliases": ["Stan", "stan"],
-            "extensions": [".stan"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "stan",
-            "scopeName": "source.stan",
-            "path": "./syntaxes/stan.tmLanguage"
-        }]
+        "languages": [
+            {
+                "id": "stan",
+                "aliases": [
+                    "Stan",
+                    "stan"
+                ],
+                "extensions": [
+                    ".stan"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "stan",
+                "scopeName": "source.stan",
+                "path": "./syntaxes/stan.tmLanguage"
+            }
+        ]
     }
 }
