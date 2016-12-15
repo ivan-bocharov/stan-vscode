@@ -17,7 +17,6 @@ or find and install it from the Extensions view.
 ## Features
 
 - Syntax highlighting
-- Sets configuration accordingly to [Stan](https://mc-stan.org]) guidelines (no tabs, two spaces)
 
 ## Known issues
 
