@@ -4,7 +4,7 @@ This package adds syntax highlighting for [Stan](https://mc-stan.org) files in [
 
 ![Syntax highilighting example](./img/highlight-example.png)
 
-The grammar is converted from the [sublime-stan](https://github.com/dougalsutherland/sublime-stan) Stan package.
+The grammar is converted from the [atom-language-stan](https://github.com/jrnold/atom-language-stan) Stan package.
 
 ## Installation
 
@@ -20,4 +20,4 @@ or find and install it from the Extensions view.
 
 ## Known issues
 
-- The package highlights variable names that match function or distribution name.
+- The package highlights variable names that match block name (`model`, `data`, etc.).
