@@ -35,6 +35,7 @@
   - `ordered_probit` (Section 13.10 Stan Functions Reference) -- `ordered_probit` and [`ordered_probit_l[u]?pdf|ordered_probit_rng`]
   - `multinomial_logit` (Section 15.2 Stan Functions Reference) -- `multinomial_logit` and [`multinomial_logit_l[u]?pdf|multinomial_logit_rng`]
   - `beta_proportion` (Section 19.2 Stan Functions Reference) -- `beta_proportion` and [`beta_proportionbeta_proportion_lccdf|beta_proportion_lcdf|beta_proportion_l[u]?pdf|beta_proportion_rng`])
+
 # 0.2.0
 - Switched to the grammar from [atom-language-stan](https://github.com/jrnold/atom-language-stan) project.
 
