@@ -16,8 +16,8 @@
     },
     {
       "comment": "block declarations",
-      "match": "\\b(functions|data|transformed\\s+data|parameters|transformed\\s+parameters|model|generated\\s+quantities)\\b",
-      "name": "keyword.other.stan"
+      "match": "\\b(functions|data|transformed\\s+data|parameters|transformed\\s+parameters|model|generated\\s+quantities)\\b\\s\\{",
+      "name": "entity.name.type.stan"
     },
     {
       "comment": "variable types",
@@ -139,32 +139,35 @@
     "comments": {
       "patterns": [
         {
-          "begin": "^\\s*(#)(include)",
+          "begin": "^\\s*((#)\\s*(include))\\b\\s*",
+          "end": "\\s*(?=(?://|/\\*|#)|\\n|$)",
           "beginCaptures": {
             "1": {
-              "name": "punctuation.definition.comment.stan"
+              "name": "keyword.control.directive.include.stan"
             },
             "2": {
-              "name": "keyword.control.directive.include.stan"
+              "name": "punctuation.definition.directive.stan"
+            },
+            "4": {
+              "name": "string.quoted.other.include.stan"
             }
           },
-          "end": "\\n",
-          "name": "comment.line.preprocessor.stan",
+          "name": "meta.preprocessor.include.stan",
           "patterns": [
             {
-              "begin": "[\"']",
+              "begin": "\"",
               "beginCaptures": {
                 "0": {
                   "name": "punctuation.definition.string.begin.stan"
                 }
               },
-              "end": "[\"']",
+              "end": "\"",
               "endCaptures": {
                 "0": {
                   "name": "punctuation.definition.string.end.stan"
                 }
               },
-              "name": "string.quoted.include.stan"
+              "name": "string.quoted.double.include.stan"
             }
           ]
         },
@@ -285,8 +288,12 @@
           "name": "keyword.operator.arithmetic.stan"
         },
         {
-          "match": "=",
+          "match": "[+-]=|\\.?[*/]=|=",
           "name": "keyword.operator.assignment.stan"
+        },
+        {
+          "match": "\\+|-|\\.?\\*|\\.?/|%|\\\\|\\^|'",
+          "name": "keyword.operator.arithmetic.stan"
         }
       ]
     },
@@ -340,6 +347,11 @@
           "match": "\\b(for|in|while|repeat|until|if|then|else|true|false|var|fvar|STAN_MAJOR|STAN_MINOR|STAN_PATCH|STAN_MATH_MAJOR|STAN_MATH_MINOR|STAN_MATH_PATCH)\\b",
           "name": "invalid.illegal.reserved.stan",
           "comment": "Words reserved for internal Stan use"
+        },
+        {
+          "match": "\\b(functions|data|transformed\\s+data|parameters|transformed\\s+parameters|model|generated\\s+quantities)\\b\\s[=+-]",
+          "name": "invalid.illegal.variable",
+          "comment": "Words reserved for Stan Program Blocks"
         }
       ]
     }
