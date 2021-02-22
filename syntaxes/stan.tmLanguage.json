@@ -21,7 +21,7 @@
     },
     {
       "comment": "variable types",
-      "match": "\\b(int|real|vector|simplex|ordered|positive_ordered|row_vector|matrix|corr_matrix|cov_matrix|cholesky_factor_cov|cholesky_factor_corr|void)\\b",
+      "match": "\\b(int|real|vector|array|simplex|ordered|positive_ordered|row_vector|matrix|corr_matrix|cov_matrix|cholesky_factor_cov|cholesky_factor_corr|void)\\b",
       "name": "storage.type.stan"
     },
     {
