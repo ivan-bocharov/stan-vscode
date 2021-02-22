@@ -28,5 +28,15 @@
         ["\"", "\""],
         ["'", "'"],
         ["<", ">"]
-    ]
+    ],
+    "indentationRules": {
+        "increaseIndentPattern": "(?x) \\{ [^}\"']* $ | \\[ [^\\]\"']* $ | \\( [^)\"']* $",
+        "decreaseIndentPattern": "(?x) ^ \\s* (\\s* /[*] .* [*]/ \\s*)* [}\\])]"
+    },
+    "folding": {
+        "markers": {
+          "start": "^[functions|data|transformed\\s+data|parameters|transformed\\s+parameters|model|generated\\s+quantities]\\s\\{$",
+          "end": "^\\}$"
+        }
+      }
 }

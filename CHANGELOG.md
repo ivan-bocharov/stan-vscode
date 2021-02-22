@@ -1,5 +1,19 @@
 # Change Log
 
+# 0.2.2
+- Snippets
+  - Control Flow: `if`, `else`, `elseif`, `for`, `ifelse`
+  - Profile: `profile`
+  - Program Blocks: `data`, `transformed data`, `parameters`, `transformed parameters`, `model`, `generated quantities`, `functions`
+  - include Directive: `include`
+- Added indentation rules (fixes #1)
+- Added better support to code folding
+- Better support for the `#include` directive (better highlighting for files inside `""`)
+- Removed old tmLanguage XML files and adopted tmLanguage.json new formats
+- Added `invalid.illegal.variable` for variables named after Program Blocks (`data`, `model` etc.) (fixes the Known Issues header in README)
+- Improved README with GIFs showing features and an updated syntax highlighting example (fixes #4)
+- Organized stuff in folders
+
 # 0.2.1
 - QR decomposition
 	- Added `qr_Q` and `qr_R` to deprecated functions.
