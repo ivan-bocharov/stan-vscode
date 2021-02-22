@@ -16,8 +16,12 @@
     },
     {
       "comment": "block declarations",
-      "match": "\\b(functions|data|transformed\\s+data|parameters|transformed\\s+parameters|model|generated\\s+quantities)\\b\\s\\{",
-      "name": "entity.name.type.stan"
+      "match": "\\b(functions|data|transformed\\s+data|parameters|transformed\\s+parameters|model|generated\\s+quantities)\\b\\s*\\{",
+      "captures": {
+        "1": {
+          "name": "entity.name.type.stan"
+        }
+      }
     },
     {
       "comment": "variable types",
