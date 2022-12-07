@@ -1,3 +1,10 @@
+functions {
+  void foo(data array[,] real x){
+    print(x);
+    return;
+  }
+}
+
 data {
   int<lower=0> J;
   real y[J];
@@ -7,6 +14,7 @@ data {
 parameters {
   real mu;
   real<lower=0> tau;
+  real<offset=0, multiplier=1> affine;
   real theta[J];
 }
 
@@ -18,6 +26,9 @@ model {
 }
 
 generated quantities {
+    complex z = 3.4i;
+    complex_vector[2] = [z,z]';
+
     vector[J] log_likelihood;
     vector[J] y_hat;
     for (j in 1:J) {
