@@ -2,16 +2,22 @@
     "name": "stan-vscode",
     "displayName": "stan-vscode",
     "description": "Stan language support for VS Code",
-    "version": "0.2.4",
+    "version": "0.3.0",
     "publisher": "ivan-bocharov",
     "repository": "https://github.com/bocharov-ivan/stan-vscode",
     "icon": "img/stan_logo.png",
     "engines": {
-        "vscode": "^1.5.0"
+        "vscode": "^1.37.0"
     },
     "categories": [
-        "Programming Languages", "Snippets"
+        "Programming Languages",
+        "Snippets",
+        "Formatters"
     ],
+    "activationEvents": [
+        "onLanguage:stan"
+    ],
+    "main": "./out/extension.js",
     "contributes": {
         "languages": [
             {
@@ -35,10 +41,47 @@
             }
         ],
         "snippets": [
-			{
-				"language": "stan",
-				"path": "./snippets/snippets.json"
-			}
-        ]
+            {
+                "language": "stan",
+                "path": "./snippets/snippets.json"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Stan formatting",
+            "properties": {
+                "stan-vscode.format.enable": {
+                    "type": "boolean",
+                    "default": true,
+                    "markdownDescription": "Enable formatting"
+                },
+                "stan-vscode.format.stancPath": {
+                    "type": "string",
+                    "default": "stanc",
+                    "markdownDescription": "Path to the stanc executable"
+                },
+                "stan-vscode.format.lineLength": {
+                    "type": "number",
+                    "default": 78,
+                    "markdownDescription": "Target line length"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install && tsc"
+    },
+    "dependencies": {
+        "child_process": "^1.0.2",
+        "compress-tag": "^1.1.4",
+        "diff": "^4.0.1",
+        "md5": "^2.2.1",
+        "util": "^0.12.1"
+    },
+    "devDependencies": {
+        "@types/md5": "^2.1.32",
+        "@types/node": "*",
+        "vscode": "^1.1.37",
+        "typescript": "2.0.6"
     }
 }

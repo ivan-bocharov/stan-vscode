@@ -1,5 +1,9 @@
 # Change Log
 
+# 0.3.0
+
+- Added a Formatter. This requires you to set the path to stanc in settings
+
 # 0.2.2
 - Snippets
   - Control Flow: `if`, `else`, `elseif`, `for`, `ifelse`
