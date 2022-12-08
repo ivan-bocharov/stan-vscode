@@ -135,16 +135,18 @@ export async function alertFormattingError(
 export async function formatFile(document: vscode.TextDocument): Promise<diff.Hunk[]> {
 
     const tmp = await createTempFile(document);
-    const command: string = await buildFormatCommand(tmp, document.fileName);
-
     try {
-        const result = await promiseExec(command);
-        const patch = diff.createPatch(path, document.getText(), result.stdout.trim())
-        const parsed: diff.ParsedDiff[] = diff.parsePatch(patch)
-        return parsed[0].hunks;
-    } catch (err) {
-        alertFormattingError(err);
-        throw err;
+        const command: string = await buildFormatCommand(tmp, document.fileName);
+
+        try {
+            const result = await promiseExec(command);
+            const patch = diff.createPatch(path, document.getText(), result.stdout.trim())
+            const parsed: diff.ParsedDiff[] = diff.parsePatch(patch)
+            return parsed[0].hunks;
+        } catch (err) {
+            alertFormattingError(err);
+            throw err;
+        }
     } finally {
         await deleteTempFile(document.fileName, tmp, logger);
     }
