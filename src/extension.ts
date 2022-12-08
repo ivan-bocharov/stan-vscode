@@ -102,10 +102,20 @@ export async function buildFormatCommand(file: string, name: string): Promise<st
 export async function alertFormattingError(
     err: FormatException
 ): Promise<void> {
+
+    logger.appendLine(err.message)
+
     if (err.message.includes("Syntax") || err.message.includes("Semantic")) {
-        logger.show(true)
-        logger.clear()
-        logger.appendLine(err.message)
+        const outputButton = "Show Output";
+        const response = await vscode.window.showErrorMessage(
+            c`Stan formatting failed due to an error in your program`,
+            outputButton
+        );
+        if (response === outputButton) {
+            logger.show(true)
+            logger.clear()
+            logger.appendLine(err.message)
+        }
     } else {
         const bugReportButton = "Submit Bug Report";
         const response = await vscode.window.showErrorMessage(
