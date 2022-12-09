@@ -25,7 +25,7 @@ const openSettingsButton = "Open Settings"
  * A callback to disable the formatter if the user requests it on error
  * @param response The response recieved from the error callback
  */
-function disableCallback(response: string) {
+function disableCallback(response: string | undefined) {
     if (response === disableFormatterButton) {
         const settings = vscode.workspace.getConfiguration("stan-vscode.format");
         settings.update("enable", false);
@@ -103,7 +103,7 @@ export async function alertFormattingError(
     err: FormatException
 ): Promise<void> {
 
-    logger.appendLine(err.message)
+    logger.appendLine(err.message);
 
     if (err.message.includes("Syntax") || err.message.includes("Semantic")) {
         const outputButton = "Show Output";
@@ -112,9 +112,9 @@ export async function alertFormattingError(
             outputButton
         );
         if (response === outputButton) {
-            logger.show(true)
-            logger.clear()
-            logger.appendLine(err.message)
+            logger.show(true);
+            logger.clear();
+            logger.appendLine(err.message);
         }
     } else {
         const bugReportButton = "Submit Bug Report";
