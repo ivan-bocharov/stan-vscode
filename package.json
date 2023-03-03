@@ -7,7 +7,7 @@
     "repository": "https://github.com/bocharov-ivan/stan-vscode",
     "icon": "img/stan_logo.png",
     "engines": {
-        "vscode": "^1.37.0"
+        "vscode": "^1.76.0"
     },
     "categories": [
         "Programming Languages",
@@ -69,7 +69,12 @@
         }
     },
     "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install && tsc"
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
     },
     "dependencies": {
         "child_process": "^1.0.2",
@@ -79,9 +84,16 @@
         "util": "^0.12.1"
     },
     "devDependencies": {
-        "@types/md5": "^2.1.32",
-        "@types/node": "*",
-        "vscode": "^1.1.37",
-        "typescript": "2.0.6"
+        "@types/glob": "^8.1.0",
+        "@types/mocha": "^10.0.1",
+        "@types/node": "16.x",
+        "@types/vscode": "^1.76.0",
+        "@typescript-eslint/eslint-plugin": "^5.53.0",
+        "@typescript-eslint/parser": "^5.53.0",
+        "@vscode/test-electron": "^2.2.3",
+        "eslint": "^8.34.0",
+        "glob": "^8.1.0",
+        "mocha": "^10.2.0",
+        "typescript": "^4.9.5"
     }
 }

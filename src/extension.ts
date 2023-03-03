@@ -170,26 +170,20 @@ export async function formatFile(document: vscode.TextDocument): Promise<diff.Hu
  * @returns Array of VSCode text edits, which map directly to the input hunks.
  */
 export function hunksToEdits(hunks: diff.Hunk[]): vscode.TextEdit[] {
-    return hunks.map(
-        (hunk): vscode.TextEdit => {
-            const startPos = new vscode.Position(hunk.newStart - 1, 0);
-            const endPos = new vscode.Position(
-                hunk.newStart - 1 + hunk.oldLines - 1,
-                hunk.lines[hunk.lines.length - 1].length - 1
-            );
-            const editRange = new vscode.Range(startPos, endPos);
+    return hunks.map((hunk): vscode.TextEdit => {
+        const startPos = new vscode.Position(hunk.oldStart - 1, 0)
+        const endPos = new vscode.Position(hunk.oldStart - 1 + hunk.oldLines, 0)
+        const editRange = new vscode.Range(startPos, endPos)
 
-            const newTextLines = hunk.lines
-                .filter(
-                    (line): boolean => line.charAt(0) === " " || line.charAt(0) === "+"
-                )
-                .map((line): string => line.substr(1));
-            const lineEndChar: string = hunk.linedelimiters[0];
-            const newText = newTextLines.join(lineEndChar);
+        const newTextFragments: string[] = []
+        hunk.lines.forEach((line, i) => {
+            const firstChar = line.charAt(0)
+            if (firstChar === " " || firstChar === "+") newTextFragments.push(line.substr(1), hunk.linedelimiters[i] ?? "\n")
+        })
+        const newText = newTextFragments.join("")
 
-            return new vscode.TextEdit(editRange, newText);
-        }
-    );
+        return vscode.TextEdit.replace(editRange, newText)
+    })
 }
 
 
