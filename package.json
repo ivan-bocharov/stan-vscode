@@ -82,7 +82,6 @@
     },
     "devDependencies": {
         "@types/glob": "^8.1.0",
-        "@types/mocha": "^10.0.1",
         "@types/node": "16.x",
         "@types/vscode": "^1.76.0",
         "glob": "^8.1.0",
