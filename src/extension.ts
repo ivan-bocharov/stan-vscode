@@ -85,6 +85,7 @@ export async function buildFormatCommand(file: string, name: string): Promise<st
     --auto-format "${file}"
     --max-line-length=${linelen}
     --filename-in-msg "${name}"
+    --allow-undefined
     `
         .trim()
         .replace(/\s+/, " "); // Remove extra whitespace (helps with tests)
